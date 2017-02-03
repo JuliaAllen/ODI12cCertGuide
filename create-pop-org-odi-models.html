@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Oracle Data Integrator (ODI) 12c - Models and Datastores</title>
+    </head>
+    
+<h3>Oracle Data Integrator (ODI) 12<em>c</em></h3> 
+    <ul><li>Create ODI Model, Populate the Model and Organize the Model</li></ul>
+    
+    A model is a set of datastores that go along with the data structures in the physical schema (think of when you set up the topology layer)
+    <br></br>
+<h3><u><b>To create a model:</b></u></h3>
+    <ol>
+    <li>In ODI Studio go to the Designer Navigator and expand the Models panel (left side)</li>
+    <li>Right-click and select New Model</li>
+    <li>Input the Name, Technology and Logical Schema (on which your model will be based)</li>
+    <li>Next choose the Reverse Engineering tab and set the Context that will be used and saved</li>
+    </ol>
+    
+<h3><u><b>Load the Model with Data (standard way):</b></u></h3>
+    <ol>
+    <li>Go to the Reverse Engineer tab. Select Standard then select the context to be used</li>
+    <li>Select the types of objects to reverse engineer</li>
+    <li>Click on the selective reverse-engineering tab and choose selective reverse engineering, new datastores, existing datastores and objects to reverse engineer</li>
+    <li>A list of datastores to be reversed engineered appears and choose save</li>
+    <li>Click reverse engineer from the Model toolbar</li>
+    </ol>
+    
+    The populated datastore will appear under the models panel. 
+    <br></br>
+    
+<h3><u><b>Organizing the Model:</b></u></h3>
+Similar to how we organize our desktops, laptos, etc we can use folders and subfolders to help organize your models. Also, you can use markers too.
+<br></br>
+<b>Create a model folder</b>
+<ol>
+<li>Expand the Models panel</li>
+<li>Click New Model Folder in the toolar of the Model panel</li>
+<li>Enter a name for your folder and save</li>
+</ol>
+<br></br>
+You can create sub-models by right-clicking on the model and choosing New sub-model.
+<br></br>
+There are 2 ways to arrange folders and sub-folders. 1) drag and drop the datastore (model) you want to put into the sub-folder/folder. 2) Set up automatic distribution - this compares datastore names to an automatic assignment mask, if they match this pattern they get moved into this sub-folder.
+<br></br>
+<b>Set up the automatic distribution of datastores in a sub-model</b>
+<ol>
+<li>In the sub-folders (models) distribution tab select Datastore distribution rule and choose the rule</li>
+<li>In automatic assignment mask field enter the pattern the datastore names must match to be associated into this sub-model</li>
+<li> In the order of mask application after a reverse engineer field enter the order in which rules should be applied at the end of a reverse and click Distribution to apply.</li>
+</ol>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</html>

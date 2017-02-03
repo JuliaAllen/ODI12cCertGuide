@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Oracle Data Integrator (ODI) 12c Overview - Architecture: Install and Configure</title>
+    </head>
+    
+<h3>Oracle Data Integrator (ODI) 12<em>c</em></h3> 
+    <ul>
+<li>Install and configure the physical and logical architecture</li></ul>
+    
+Let's start with the basics and then move to the tool itself. ODI 12c uses a master repository and (several) work repositories if needed. Try to remember that the master stores 'global' information - topology (data severs, physical/logical schemas, contexts, agents) and security information (users, user profiles, permissions) while work repositories store the details (models, metadata, constraints, scenarios, mappings, projects, packages, etc) for projects. 
+    <br></br>
+Before you can use ODI 12c you have to create the Master and Work respository database schemas using the Repository Creation Utility (RCU). Let's walk through a very light review - make sure to go read the <a href="https://docs.oracle.com/middleware/1212/odi/ODING/create_schemas.htm#ODING863" target="_blank">official Oracle install documents</a> for greater detail.
+<br></br>
+<ol>
+    <li>Set the JAVA_HOME variables to your JDK location. (note: in many instances on Windows a lot of errors will relate to the Environment variables not being set. If you work with Windows, always make sure your variables are set)</li>
+    <li>Start the RCU: on the command line CD to the directory where the rcu is located, and on Unix ./rcu and on Windows rcu.bat to run the RCU</li>
+    <li>A window will appear, click Next</li>
+    <li>Make sure you have the necessary permissions and click next</li>
+    <li>Input the database connection details for RCU to connect to your database, click Next and OK</li>
+    <li>Select 'Create a new prefix' - name the custom prefix - then choose Oracle Data Integrator schema</li>
+    <li>Depending on if you are running the Standalone or Enterprise install you will see different windows - write down your prefix information</li>
+    <li>Input your schema passwords - write down the password information</li>
+    <li>Setup your variables - write down the variable information</li>
+    <li>Click Next and OK through the remaining windows. When you reach the summary screen click Close</li>
+</ol>
+Now configure the Topology. There are (3) ways to configure Topology:
+<ol>
+    <li><a href="https://docs.oracle.com/middleware/1212/odi/ODING/configure_jee.htm#ODING281" target="_blank">Standard Install for Java EE Agent (Enterprise)</a></li>
+    <li><a href="https://docs.oracle.com/middleware/1212/odi/ODING/configure_sa.htm#ODING728" target="_blank">Standalone Agent</a></li>
+    <li><a href="https://docs.oracle.com/middleware/1212/odi/ODING/configure_col.htm#ODING872" target="_blank">Colocated Agent</a></li>
+</ol>
+
+<h3><b><u>Agents</u></b></h3>
+The Standalone Agent is the original agent. It uses a UCP (universal connection pool) but it can't be configured. It has a light footprint and does not require an application server (hence the name Standalone (Java) Agent). It's perfect for existing systems and provides all the features to orchestrate DI processes. It can sit on the same server as the target database (hence improved performace by reducing network hops). It can also be installed on a file server (if you need access to flat files, utilities, etc)
+<br></br>
+Java EE Agent is for Enterprise installs. This is deployed in WebLogic Server and is managed in EM. The benefit of the JEE Agent is high availability (up continuously) - allows for scheduling. The schedules are stored in a cache so if a node goes down, it still executes. Connection Pool: with the WLS Java EE already has connections, so it doesn't have to connect and disconnect from the database (aka more efficient). Oracle Enterprise Manager Cloud Control can be used to manage the ODI JEE Agents. Constraint: you can't install the JEE agent on the database server, since it runs on top of the application server (aka it can't access files/utilities that are not on the app server. To do this you must combine with Standalone agent)
+<br></br>
+Colocated Agent is for installs that require neither high availbility or connection pooling. It is part of the WLS domain but it does allow access to local files/utilities and centralizes monitoring and alerting. 
+<br></br>
+<img src="/Agents_Compare_v2.png"></img>
+<br></br>
+Source of image: Oracle Ateam
+
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

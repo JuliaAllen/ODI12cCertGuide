@@ -1,8 +1,14 @@
-<div class="c79more">
-    <div class="c79left">
-    <h3>Oracle Data Integrator (ODI) 12<em>c</em> Overview</h3>
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Oracle Data Integrator (ODI) 12c Overview - Architecture and Components</title>
+    </head>
+    
+<h3>Oracle Data Integrator (ODI) 12<em>c</em></h3> 
     <ul>
-<li>Describe ODI components and their uses</li></ul>
+<li>Describe ODI Architecture, components and their uses</li></ul>
 
 ODI 12c is built around a repository which can be accessed by components such as ODI Studio (and Agents). It also has web-based access via the Management Pack for ODI (works with Oracle Enterprise Manager Cloud Control) and the ODI Console (access metadata information via a web interface)
 <br></br>
@@ -26,7 +32,7 @@ There are 3 types of Agents:
     <li><b>Standalone Agents:</b> can be installed on source or target systems, require Java Virtual Machine</li>
     <li><b>Colocated Standalone Agents:</b> Managed by Oracle Enterprise Manager and must be configured with an Oracle WebLogic domain. Can run on a separate machine from the Oracle WebLogic Admin Server
     </li>
-    <li><b>Java EE</b>: Deployed on oracle WebLogic Server and benefits from application server layer features such as clustering for High Availability requirements. Managed using Oracle Enterprise Manager.</li>
+    <li><b>Java EE</b>: Deployed on Oracle WebLogic Server and benefits from application server layer features such as clustering for High Availability requirements. Managed using Oracle Enterprise Manager.</li>
 </ul>
 
 <h3><u><b>Knowledge Modules</b></u></h3>
@@ -74,17 +80,15 @@ Note: If a repository is dedicated to execution information storage only, it's c
 
 Allows admins to monitor and manage all of their ODI components from a single console. It also lets you monitor executions and drill-down capabilities. 
 <br></br>
-<b>CDC framework:</b> tracks changes in source systems and reduces volume of processed data by taking only the changed data.
+<h3><b>CDC framework:</b></h3>tracks changes in source systems and reduces volume of processed data by taking only the changed data.
 <br></br>
-<b>Web Services:</b> offers integration with Service-Oriented architecture (SOA)
+<h3><b>Web Services:</b></h3> offers integration with Service-Oriented architecture (SOA)
 <br></br>
-<b>Load Balancing:</b> enables large volumes of data to be processed automatically balancing the wordload between several Agents
+<h3><b>Load Balancing:</b></h3> enables large volumes of data to be processed automatically balancing the wordload between several Agents
 <br></br>
 
 
-
-
-
+</html>
 
 
 
