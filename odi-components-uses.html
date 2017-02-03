@@ -1,0 +1,119 @@
+<div class="c79more">
+    <div class="c79left">
+    <h3>Oracle Data Integrator (ODI) 12<em>c</em> Overview</h3>
+    <ul>
+<li>Describe ODI components and their uses</li></ul>
+
+ODI 12c is built around a repository which can be accessed by components such as ODI Studio (and Agents). It also has web-based access via the Management Pack for ODI (works with Oracle Enterprise Manager Cloud Control) and the ODI Console (access metadata information via a web interface)
+<br></br>
+<h3><u><b>ODI Studio</b></u></h3>
+
+There are 4 main navigators in ODI 12c Console:
+<ul>
+    <li><b><em>Designer:</em></u></b> All project development occurs here (database and application metadata are imported and defined here). This is where you generate data integration scenarios or load plans for production</li>
+    <li><b><em>Operator:</em></b> This is where you manage and monitor processes. You will find execution logs with error counts, number of rows processed, execution statistics, actual code that is executed, etc and this is where you troubleshoot errors
+    </li>
+    <li><b><em>Topology:</b></em> defines the physical and logical architecture of the infrastructure. This is where admins register servers, database schemas and catalogs as well as agents.</li>
+    <li><b><em>Security:</em></b> this is where you manage security profiles, roles, privileges and assign access to objects.</li>
+</ul>
+
+Another key feature in ODI 12c is the use of <b>Agents</b> to orchestrate execution of sessions. These agents will go get the code stored in the repository, connect it to the source and target systems and manage the process. Rarely do they ever perform the transformation, they really are the 'managers' of simply moving code where it should go. It is similar to an assembly line belt that moves the products around but doesn't do the welding or smashing - they just go get the code that will perform those actions. When the action is complete, it updates the execution logs from the Operator Navigator (or OEM).
+
+They are multithreaded, load-balanced lightweight components in the architecture.
+
+There are 3 types of Agents:
+<ul>
+    <li><b>Standalone Agents:</b> can be installed on source or target systems, require Java Virtual Machine</li>
+    <li><b>Colocated Standalone Agents:</b> Managed by Oracle Enterprise Manager and must be configured with an Oracle WebLogic domain. Can run on a separate machine from the Oracle WebLogic Admin Server
+    </li>
+    <li><b>Java EE</b>: Deployed on oracle WebLogic Server and benefits from application server layer features such as clustering for High Availability requirements. Managed using Oracle Enterprise Manager.</li>
+</ul>
+
+<h3><u><b>Knowledge Modules</b></u></h3>
+
+Knowledge Modules (KMs) reduce total ownership costs, improve flexibility and extensibility. They define templates for code. They are generic in relation to transformation rules and specific to given technologies (such as LKM to SQL Append, etc). There are over 100 out of the box and there are 6 families based on tasks.
+<ul>
+    <li>RKMs - reverse engineering</li>
+    <li>Change Data Capture (CDC)</li>
+    <li>Source to Target</li>
+    <li>Check restraints to find target table</li>
+    <li>Integrate on target</li>
+    <li>Expose data as a web service</li>
+</ul>
+
+Specific Types of KMs:
+<ul>
+    <li>Reverse-engineering KM: gets metadata to ODI work repository</li>
+    <li>Check KM: checks consistency of data against constraints</li>
+    <li>Loading KM: loads heterogeneous data to a staging area</li>
+    <li>Integration KM: integrates data from staging area to target </li>
+    <li>Journalizing KM: creates CDC framework objects in source staging area</li>
+    <li>Service KM: generates data manipulation web services</li>
+</ul>
+
+<h3><u><b>Repositories</b></u></h3>
+
+ODI 12c Architecture is built around a centralized repository model. A <b>Repository</b> is made up of one or more <em>Master Repositories</em> and (typically) several <em>Work Respositories</em>.
+These repositories are where the tables are stored in a relational database system (ex: oracle, Microsoft SQL Server). This is also where all objects that the ODI modules configure, develop or use are stored.  
+<br></br>
+<b>Master Repository:</b> holds security information (user profiles, roles, privileges), topology information (definitions for technologies and servers) and source code for all versions of ODI objects versioned. This information is maintained with Topology and Seciroty Navigators.
+<br></br>
+<b>Work Repository:</b> this is where you store project objects. Typically several work repositories will co-exist and reflect what their purpose is (Dev, QA, Prod). You manage the content of the WR in the <em>Designer</em> and <em>Operator Navigators</em> in ODI Studio.
+
+<ul>
+    <li><b>Models:</b> stores metadata information; datastores, columns, data lineage, cross references, data constraints</li>
+    <li><b>Projects:</b> stores mappings, packages, procedures, folders, varaibles and KMs</li>
+    <li><b>Runtime Information:</b> including scenarios, load plans, scheduling information and execution logs</li>
+</ul>
+
+It is important to remember: each work repository (dev, QA) is attached to ONLY 1 master repository.
+<br></br>
+Note: If a repository is dedicated to execution information storage only, it's called an execution repository (Prod). It is accessed at runtime from the Operator Navigator, Agents and by OEM
+<br></br>
+<h3><b>Management Pack for ODI</b></h3>
+
+Allows admins to monitor and manage all of their ODI components from a single console. It also lets you monitor executions and drill-down capabilities. 
+<br></br>
+<b>CDC framework:</b> tracks changes in source systems and reduces volume of processed data by taking only the changed data.
+<br></br>
+<b>Web Services:</b> offers integration with Service-Oriented architecture (SOA)
+<br></br>
+<b>Load Balancing:</b> enables large volumes of data to be processed automatically balancing the wordload between several Agents
+<br></br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
