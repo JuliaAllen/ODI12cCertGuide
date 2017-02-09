@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Oracle Data Integrator (ODI) 12c Overview - Models and Datastores - Mapping Components and Expressions</title>
+    </head>
+    
+<h3>Oracle Data Integrator (ODI) 12<em>c</em></h3> 
+    <ul>
+<li>Mapping Components and Expressions</li></ul>
+
+Reference: <a href="https://docs.oracle.com/middleware/1212/odi/ODIDG/mappings.htm#ODIDG1562" target="_blank"> Oracle Docs </a>
+    
+Mappings: logical and physical organization of your data sources, targets and the transformations through which the data flows from source to target. 
+    
+Mapping Compoents are divided into 2 categories:
+    
+    Projector Components: influence the attributes present in the data that flows through a mapping. It hides all attributes originating from preceding components; all succeeding components can only use attributes from the projector (ex: reusable mappings, aggregates, distincts, creating sets, dataset in a mapping)
+    
+    Selector Components: re-use attributes from preceding components. (ex: join, lookups, filters, sorts, splits). They are represented as a round shape. 
+    
+Components:
+    
+    Datastores (DS): act as Projector Components. Source DS are read by the mapping. Target DS are elements that are loaded by the mapping.
+    
+    Datasets: option to use as a source in a mapping. Provide logical container where you organize sources, define joins and filters through entity-relationship mechanism (vs flow mechanism used elsewere). Datasets act as selector components.
+    
+    Reusable Mappings: can be nested. Can include datastores as sources and targets itself. Act as projector components. 
+    
+    Component Palette: You can also use the following in the mapping diagram: Expression, Aggregate, Distinct, Set, Filter, Join, Lookup, Sort, Split
+    
+    Connections: create flow of data between mapping components. Most have input and output connectors. If it only has an input, it is a source. If it only has output connector, it is a target. 
+    
+    Staging Schemas: specify a staging area for a mapping or for a specific deployment specification of a mapping. To define a different staging area than any of the source or target datastores, you must define the correct physical and logical schemas in the mapping's execution context before creating a mapping (Topology)
+    
+    Knowledge Modules: how data is moved from source to target in ODI. 
+    
+    Variables, Sequences and User Functions: used in mappings as expressions. Created in the project. 
+    
+    
+    Expressions have a result type, such as VARCHAR or NUMERIC. Conditions are boolean, meaning, the result of a condition should always evaluate to TRUE or FALSE. A condition is needed for filter, join, and lookup (selector) components, while an expression is used in datastore, aggregate, and distinct (projector) components, to perform some transformation or create the attribute-level mappings.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
