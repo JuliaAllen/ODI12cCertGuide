@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Oracle Data Integrator (ODI) 12c Overview - Managing Execution - Use variables in packages (refresh, startup parameters)</title>
+    </head>
+    
+<h3>Oracle Data Integrator (ODI) 12<em>c</em></h3> 
+    <ul>
+<li>Use variables in packages (refresh, startup parameters)</li></ul>
+<br></br>
+A variable is an object that stores a single value. It can be a data, string or number. It can be used in any expression and in the metadata of the repository. 
+<br></br>
+It is resolved when the command containing it is executed by the agent or GUI
+<br></br>
+When you create a package, you have to tell it when to do. These are called steps. ODI has different types of steps: 
+<ul>
+<li>Mapping steps</li>
+<li>Procedure steps</li>
+<li>Variable steps</li>
+<li>ODItool steps (mostly OdiStartScen, OdiInvokeWebService, OS Command).</li>
+</ul>
+<br></br>   
+You always want to make sure you declare a variable in ODI. Here is a list of variables to use in a package:
+<br></br>
+<ul>
+    <li><b>Declare Variable:</b> explicitly declares a variable in the package</li>
+    <li><b>Refresh Variable:</b> refreshes the variable by running the query specified in the variable definition</li>
+    <li><b>Set Variable:</b></li>
+    <li><b>Assign</b> - sets the current value of variable. You can:</li>
+    <ol>
+        <li>Get the value from a SQL Select statement</li>
+        <li>Manually/explicitly assign the value in a package</li>
+        <li>Increment the value (only for those with numeric data types)</li>
+        <li>Assign value at runtime</li>
+    </ol>
+    <li><b>Increment</b> - increases or decreases a numeric value by the specified amount</li>
+    <li><b>Evaluate Variable:</b> compares the value of the variable with given value according to an operator. Allows for branching.</li>
+</ul>
+<br></br>
+</html>
